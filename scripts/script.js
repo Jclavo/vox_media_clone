@@ -59,6 +59,7 @@ function renderDiv(index) {
   const itemDiv = document.createElement("div");
   itemDiv.className = "lyric-line";
   itemDiv.dataset.index = String(index);
+  itemDiv.style.backgroundColor = getRandomColor();
   return itemDiv;
 }
 
@@ -98,6 +99,10 @@ function highlightCurrentLyric() {
     const index = Number(lineEl.dataset.index);
     lineEl.classList.toggle("active", index === activeIndex);
   });
+}
+
+function getRandomColor() {
+  return "#" + Math.floor(Math.random()*16777215).toString(16);
 }
 
 renderLyrics();

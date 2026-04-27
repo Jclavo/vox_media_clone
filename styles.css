@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+section {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+}
+
+.div-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.box {
+  background: #e9f0ff;
+  border: 1px solid #c4d5ff;
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+}

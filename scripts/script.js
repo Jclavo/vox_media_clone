@@ -3,12 +3,21 @@ const lyricsList = document.getElementById("lyrics-list");
 
 // Replace these lines with your real lyrics/transcript and timestamps.
 const lyricsData = [
-  { time: 0, text: "Intro music starts.", position: "center", delay: "0ms" },
-  { time: 8, text: "Welcome to the podcast episode.", position: "left", delay: "200ms" },
-  { time: 16, text: "Today we talk about media and storytelling.", position: "right", delay: "400ms" },
-  { time: 26, text: "First topic: background and context.", position: "center", delay: "600ms" },
-  { time: 36, text: "Second topic: practical examples.", position: "right", delay: "800ms" },
-  { time: 48, text: "Final thoughts and closing.", position: "left", delay: "1000ms" }
+  { time: 0, text: "Intro music starts.", position: "center"},
+  { time: 6, text: "Welcome to the podcast episode.", position: "left"},
+  { time: 10, text: "Today we talk about media and storytelling.", position: "right"},
+
+
+  { time: 16, text: "First topic:", position: "center"},
+  { time: 20, text: "Background.", position: "center"},
+  { time: 24, text: "Context.", position: "center"},
+
+  { time: 30, text: "Second topic.", position: "right"},
+  { time: 34, text: "Second topic: practical examples.", position: "right"},
+
+  { time: 40, text: "Last Topic", position: "left"},
+  { time: 44, text: "Final thoughts", position: "left"},
+  { time: 48, text: "Closing.", position: "left"},
 ];
 
 function renderLyrics() {

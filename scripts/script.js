@@ -20,7 +20,8 @@ function renderLyrics() {
     const itemParagraph = document.createElement("p");    
     itemParagraph.style.textAlign = line.position;
     itemParagraph.setAttribute("data-sal", "fade");
-    itemParagraph.setAttribute("data-sal-duration", "500");
+    itemParagraph.setAttribute("data-sal-duration", "2000");
+    itemParagraph.setAttribute("data-sal-delay", String(line.time * 1000));
     itemParagraph.textContent = line.text;
     itemDiv.appendChild(itemParagraph);
     lyricsList.appendChild(itemDiv);
@@ -55,6 +56,7 @@ function highlightCurrentLyric() {
 renderLyrics();
 
 if (typeof sal === "function") {
+  console.log("sal is a function"); // remember to remove this later
   sal({
     once: false
   });

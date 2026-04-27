@@ -37,3 +37,27 @@ h2 {
   padding: 1rem;
   text-align: center;
 }
+
+.lyrics-note {
+  margin-bottom: 0.75rem;
+  color: #555;
+}
+
+.lyrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lyric-line {
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.65rem 0.8rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.lyric-line.active {
+  background: #fff7d6;
+  border-color: #ffd45a;
+}

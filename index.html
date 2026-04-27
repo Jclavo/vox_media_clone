@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vox Media Clone</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dist/sal.css">
 </head>
 <body>
   <div class="container">
@@ -15,21 +16,19 @@
 
     <section id="audio-player">
       <h2>Play Audio File</h2>
-      <audio controls>
+      <audio id="podcast-audio" controls>
         <source src="audio/episode1.mp3" type="audio/mp3">
         Your browser does not support the audio element.
       </audio>
     </section>
 
-    <section id="content-divs">
-      <h2>Slides from the Mp3 file</h2>
-      <div class="div-grid">
-        <div class="box">Slide 1</div>
-        <div class="box">Slide 2</div>
-        <div class="box">Slide 3</div>
-        <div class="box">Slide 4</div>
-      </div>
+    <section id="lyrics-section">
+      <h2>Lyrics / Transcript</h2>
+      <p class="lyrics-note">Edit timestamps and text in <code>script.js</code> to match your audio.</p>
+      <div id="lyrics-list" class="lyrics-list"></div>
     </section>
   </div>
+  <script src="scripts/dist/sal.js"></script>
+  <script src="scripts/script.js"></script>
 </body>
 </html>

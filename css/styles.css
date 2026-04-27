@@ -61,3 +61,8 @@ h2 {
   background: #fff7d6;
   border-color: #ffd45a;
 }
+
+.paragraph-line {
+  color: white;
+  font-weight: bold;
+}

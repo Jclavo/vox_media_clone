@@ -3,12 +3,12 @@ const lyricsList = document.getElementById("lyrics-list");
 
 // Replace these lines with your real lyrics/transcript and timestamps.
 const lyricsData = [
-  { time: 0, text: "Intro music starts.", position: "center" },
-  { time: 8, text: "Welcome to the podcast episode.", position: "left" },
-  { time: 16, text: "Today we talk about media and storytelling.", position: "right" },
-  { time: 26, text: "First topic: background and context.", position: "center" },
-  { time: 36, text: "Second topic: practical examples.", position: "right" },
-  { time: 48, text: "Final thoughts and closing.", position: "left" }
+  { time: 0, text: "Intro music starts.", position: "center", delay: "0ms" },
+  { time: 8, text: "Welcome to the podcast episode.", position: "left", delay: "200ms" },
+  { time: 16, text: "Today we talk about media and storytelling.", position: "right", delay: "400ms" },
+  { time: 26, text: "First topic: background and context.", position: "center", delay: "600ms" },
+  { time: 36, text: "Second topic: practical examples.", position: "right", delay: "800ms" },
+  { time: 48, text: "Final thoughts and closing.", position: "left", delay: "1000ms" }
 ];
 
 function renderLyrics() {
@@ -20,8 +20,8 @@ function renderLyrics() {
     const itemParagraph = document.createElement("p");    
     itemParagraph.style.textAlign = line.position;
     itemParagraph.setAttribute("data-sal", "fade");
-    itemParagraph.setAttribute("data-sal-duration", "2000");
-    itemParagraph.setAttribute("data-sal-delay", String(line.time * 1000));
+    itemParagraph.style.transitionDuration = "2s";
+    itemParagraph.style.transitionDelay = line.time * 1000 + "ms";
     itemParagraph.textContent = line.text;
     itemDiv.appendChild(itemParagraph);
     lyricsList.appendChild(itemDiv);

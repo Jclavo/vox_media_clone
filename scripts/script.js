@@ -3,23 +3,27 @@ const lyricsList = document.getElementById("lyrics-list");
 
 // Replace these lines with your real lyrics/transcript and timestamps.
 const lyricsData = [
-  { time: 0, text: "Intro music starts." },
-  { time: 8, text: "Welcome to the podcast episode." },
-  { time: 16, text: "Today we talk about media and storytelling." },
-  { time: 26, text: "First topic: background and context." },
-  { time: 36, text: "Second topic: practical examples." },
-  { time: 48, text: "Final thoughts and closing." }
+  { time: 0, text: "Intro music starts.", position: "center" },
+  { time: 8, text: "Welcome to the podcast episode.", position: "left" },
+  { time: 16, text: "Today we talk about media and storytelling.", position: "right" },
+  { time: 26, text: "First topic: background and context.", position: "center" },
+  { time: 36, text: "Second topic: practical examples.", position: "right" },
+  { time: 48, text: "Final thoughts and closing.", position: "left" }
 ];
 
 function renderLyrics() {
   lyricsData.forEach((line, index) => {
-    const item = document.createElement("div");
-    item.className = "lyric-line";
-    item.dataset.index = String(index);
-    item.setAttribute("data-sal", "fade");
-    item.setAttribute("data-sal-duration", "500");
-    item.textContent = line.text;
-    lyricsList.appendChild(item);
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "lyric-line";
+    itemDiv.dataset.index = String(index);
+
+    const itemParagraph = document.createElement("p");    
+    itemParagraph.style.textAlign = line.position;
+    itemParagraph.setAttribute("data-sal", "fade");
+    itemParagraph.setAttribute("data-sal-duration", "500");
+    itemParagraph.textContent = line.text;
+    itemDiv.appendChild(itemParagraph);
+    lyricsList.appendChild(itemDiv);
   });
 }
 

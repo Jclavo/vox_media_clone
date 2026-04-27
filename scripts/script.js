@@ -35,7 +35,7 @@ function renderLyrics() {
     actualLineType = line.type;
     // debugger
     if (actualLineType == "section") {
-      itemDiv = renderDiv(index);
+      itemDiv = renderDiv(index, line.time);
       lyricsList.appendChild(itemDiv);
       previousLineType = actualLineType;
       continue;
@@ -55,11 +55,16 @@ function renderLyrics() {
   }
 }
 
-function renderDiv(index) {
+function renderDiv(index, time) {
   const itemDiv = document.createElement("div");
   itemDiv.className = "lyric-line";
   itemDiv.dataset.index = String(index);
   itemDiv.style.backgroundColor = getRandomColor();
+  itemDiv.setAttribute("data-sal", "fade");
+  itemDiv.style.transitionDuration = "1s";
+
+  // Use 'start' for the display delay, fallback to 0
+  itemDiv.style.transitionDelay = (time || 0) * 1000 + "ms";
   return itemDiv;
 }
 

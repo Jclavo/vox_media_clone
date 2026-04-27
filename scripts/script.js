@@ -73,6 +73,7 @@ function renderParragraph(line) {
   // Use 'start' for the display delay, fallback to 0
   itemParagraph.style.transitionDelay = (line.time || 0) * 1000 + "ms";
   itemParagraph.textContent = line.text;
+  itemParagraph.className = "paragraph-line";
   return itemParagraph;
 }
 

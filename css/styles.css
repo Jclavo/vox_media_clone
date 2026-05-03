@@ -66,3 +66,7 @@ h2 {
   color: white;
   font-weight: bold;
 }
+
+audio {
+  width: 100% !important;
+}

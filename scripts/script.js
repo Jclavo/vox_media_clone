@@ -29,15 +29,17 @@ function renderLyrics() {
   let itemParagraph = null;
   let actualLineType = null;
   let previousLineType = null;
+  let indexSection = 0;
 
   for (let index = 0; index < lyricsData.length; index++) {
     const line = lyricsData[index];
     actualLineType = line.type;
-    // debugger
+
     if (actualLineType == "section") {
-      itemDiv = renderDiv(index, line.time);
+      itemDiv = renderDiv(indexSection, line.time);
       lyricsList.appendChild(itemDiv);
       previousLineType = actualLineType;
+      indexSection++
       continue;
     }
 
@@ -57,7 +59,7 @@ function renderLyrics() {
 
 function renderDiv(index, time) {
   const itemDiv = document.createElement("div");
-  itemDiv.className = "lyric-line";
+  itemDiv.className = "lyric-section";
   itemDiv.dataset.index = String(index);
   itemDiv.style.backgroundColor = getRandomColor();
   itemDiv.setAttribute("data-sal", "fade");
@@ -90,10 +92,12 @@ function highlightCurrentLyric() {
   const currentTime = audio.currentTime;
   let activeIndex = -1;
 
-  for (let i = 0; i < lyricsData.length; i += 1) {
-    const currentLine = lyricsData[i];
-    const nextLine = lyricsData[i + 1];
-    const isInRange = currentTime >= currentLine.time && (!nextLine || currentTime < nextLine.time);
+  const lyricsDataSections = lyricsData.filter(section => section.type === "section");
+
+  for (let i = 0; i < lyricsDataSections.length; i += 1) {
+    const currentSection = lyricsDataSections[i];
+    const nextSection = lyricsDataSections[i + 1];
+    const isInRange = currentTime >= currentSection.time && (!nextSection || currentTime < nextSection.time);
 
     if (isInRange) {
       activeIndex = i;
@@ -101,9 +105,9 @@ function highlightCurrentLyric() {
     }
   }
 
-  document.querySelectorAll(".lyric-line").forEach((lineEl) => {
-    const index = Number(lineEl.dataset.index);
-    lineEl.classList.toggle("active", index === activeIndex);
+  document.querySelectorAll(".lyric-section").forEach((sectionEl) => {
+    const index = Number(sectionEl.dataset.index);
+    sectionEl.style.display = index !== activeIndex ? "none" : "block";
   });
 }
 

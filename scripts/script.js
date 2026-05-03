@@ -1,27 +1,22 @@
 const audio = document.getElementById("podcast-audio");
 const lyricsList = document.getElementById("lyrics-list");
+let lyricsData = [];
 
-// Replace these lines with your real lyrics/transcript and timestamps.
-const lyricsData = [
-  { type: "section", time: 0, text: "Intro"},
-  { type: "line", time: 1, text: "Music starts.", position: "center"},
-  { type: "line", time: 6, text: "Welcome to the podcast episode.", position: "left"},
-  { type: "line", time: 10, text: "Today we talk about media and storytelling.", position: "right"},
+async function loadLyricsData(filePath) {
+  const response = await fetch(filePath);
+  const raw = await response.text();
 
-  { type: "section", time: 16, text: "First topic:"},
-  { type: "line", time: 1, text: "Background.", position: "center"},
-  { type: "line", time: 6, text: "Context.", position: "center"},
-  
-  { type: "section", time: 30, text: "Second topic:"},
-  { type: "line", time: 1, text: "Second topic: practical examples.", position: "right"},
-  
-  { type: "section", time: 40, text: "Last Topic"},
-  { type: "line", time: 1, text: "Final thoughts", position: "left"},
-  { type: "line", time: 6, text: "Closing.", position: "left"},
-  
-  { type: "section", time: 50, text: "Outro"},
-  { type: "line", time: 1, text: "Outro music starts.", position: "center"},
-];
+  return raw
+    .split("\n")
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .map(line => {
+      const [type, time, text, position] = line.split("|");
+      const entry = { type, time: Number(time), text };
+      if (position) entry.position = position;
+      return entry;
+    });
+}
 
 function renderLyrics() {
 
@@ -113,14 +108,19 @@ function getRandomColor() {
   return "#" + Math.floor(Math.random()*16777215).toString(16);
 }
 
-renderLyrics();
+// Usage
+(async () => {
+  lyricsData = await loadLyricsData("transcripts/mylyrics.csv");
+  renderLyrics();
 
-if (typeof sal === "function") {
-  console.log("sal is a function"); // remember to remove this later
-  sal({
-    once: false
-  });
-}
+  if (typeof sal === "function") {
+    console.log("sal is a function"); // remember to remove this later
+    sal({
+      once: false
+    });
+  }
+})();
+
 
 if (audio) {
   audio.addEventListener("timeupdate", highlightCurrentLyric);

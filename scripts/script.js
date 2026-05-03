@@ -9,18 +9,18 @@ const lyricsData = [
   { type: "line", time: 10, text: "Today we talk about media and storytelling.", position: "right"},
 
   { type: "section", time: 16, text: "First topic:"},
-  { type: "line", time: 20, text: "Background.", position: "center"},
-  { type: "line", time: 24, text: "Context.", position: "center"},
+  { type: "line", time: 1, text: "Background.", position: "center"},
+  { type: "line", time: 6, text: "Context.", position: "center"},
   
   { type: "section", time: 30, text: "Second topic:"},
-  { type: "line", time: 34, text: "Second topic: practical examples.", position: "right"},
+  { type: "line", time: 1, text: "Second topic: practical examples.", position: "right"},
   
   { type: "section", time: 40, text: "Last Topic"},
-  { type: "line", time: 44, text: "Final thoughts", position: "left"},
-  { type: "line", time: 48, text: "Closing.", position: "left"},
+  { type: "line", time: 1, text: "Final thoughts", position: "left"},
+  { type: "line", time: 6, text: "Closing.", position: "left"},
   
   { type: "section", time: 50, text: "Outro"},
-  { type: "line", time: 54, text: "Outro music starts.", position: "center"},
+  { type: "line", time: 1, text: "Outro music starts.", position: "center"},
 ];
 
 function renderLyrics() {
@@ -66,7 +66,7 @@ function renderDiv(index, time) {
   itemDiv.style.transitionDuration = "1s";
 
   // Use 'start' for the display delay, fallback to 0
-  itemDiv.style.transitionDelay = (time || 0) * 1000 + "ms";
+  // itemDiv.style.transitionDelay = (time || 0) * 1000 + "ms";
   return itemDiv;
 }
 

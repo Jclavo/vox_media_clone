@@ -59,14 +59,12 @@ function renderLyrics() {
 
 function renderDiv(index, time) {
   const itemDiv = document.createElement("div");
-  itemDiv.className = "lyric-section";
+  itemDiv.className = "lyrics-section";
   itemDiv.dataset.index = String(index);
   itemDiv.style.backgroundColor = getRandomColor();
   itemDiv.setAttribute("data-sal", "fade");
   itemDiv.style.transitionDuration = "1s";
 
-  // Use 'start' for the display delay, fallback to 0
-  // itemDiv.style.transitionDelay = (time || 0) * 1000 + "ms";
   return itemDiv;
 }
 
@@ -80,7 +78,7 @@ function renderParragraph(line) {
   // Use 'start' for the display delay, fallback to 0
   itemParagraph.style.transitionDelay = (line.time || 0) * 1000 + "ms";
   itemParagraph.textContent = line.text;
-  itemParagraph.className = "paragraph-line";
+  itemParagraph.className = "lyrics-line";
   return itemParagraph;
 }
 
@@ -105,7 +103,7 @@ function highlightCurrentLyric() {
     }
   }
 
-  document.querySelectorAll(".lyric-section").forEach((sectionEl) => {
+  document.querySelectorAll(".lyrics-section").forEach((sectionEl) => {
     const index = Number(sectionEl.dataset.index);
     sectionEl.style.display = index !== activeIndex ? "none" : "block";
   });

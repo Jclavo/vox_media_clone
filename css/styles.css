@@ -45,6 +45,7 @@ h2 {
 
 .lyrics-section {
   height: 500px;
+  display: none;
 }
 
 .lyrics-line {

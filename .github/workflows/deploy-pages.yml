@@ -38,7 +38,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/
-          for dir in css scripts audio; do
+          for dir in css scripts audio transcripts; do
             if [ -d "$dir" ]; then cp -r "$dir" _site/; fi
           done
 

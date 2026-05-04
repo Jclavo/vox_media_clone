@@ -1,6 +1,8 @@
-# 🎙️ Vox Media Clone
+# 🎙️ Vox Media Alternative
 
-A front-end clone of the Vox Media website featuring an interactive audio player with synchronized transcript/lyrics highlighting. Built with vanilla HTML, CSS, and JavaScript.
+A front-end alternative of the Vox Media website featuring an interactive audio player with synchronized transcript. Built with HTML, CSS, and JavaScript.
+
+The most recent build is available at [Vox Media Alternative Web Site](https://jclavo.github.io/vox_media_clone/)
 
 ---
 
@@ -25,7 +27,7 @@ A front-end clone of the Vox Media website featuring an interactive audio player
 
 ## Overview
 
-**Vox Media Clone** is a static web application that replicates the look and feel of the [Vox Media](https://www.voxmedia.com) website. Its core feature is a podcast/audio player that displays a synchronized transcript — as the audio plays, the corresponding lines in the transcript are highlighted in real time, providing an accessible and engaging listening experience.
+**Vox Media Alternative** is a static web application that replicates the look and feel of the [Vox Media](https://www.voxmedia.com) website. Its core feature is a podcast/audio player that displays a synchronized transcript — as the audio plays, the corresponding lines in the transcript are highlighted in real time, providing an accessible and engaging listening experience.
 
 ---
 
@@ -73,7 +75,6 @@ This project is a static website — no server-side runtime or package manager i
 
 **Optional tools for development:**
 
-- [Node.js](https://nodejs.org/) (v14+) — if you want to use a local dev server like `live-server`
 - [Git](https://git-scm.com/) — for cloning the repository
 
 ---
@@ -95,26 +96,7 @@ cd vox_media_clone
 
 Because the app loads audio files, it's best served from a local HTTP server rather than opened directly as a file (`file://`).
 
-**Option 1 — Using Node.js `live-server`:**
-
-```bash
-npm install -g live-server
-live-server
-```
-
-**Option 2 — Using Python's built-in server:**
-
-```bash
-# Python 3
-python -m http.server 8080
-
-# Python 2
-python -m SimpleHTTPServer 8080
-```
-
-Then open your browser at `http://localhost:8080`.
-
-**Option 3 — Using VS Code Live Server extension:**
+**VS Code Live Server extension:**
 
 Right-click `index.html` in VS Code and select **"Open with Live Server"**.
 
@@ -136,21 +118,26 @@ Right-click `index.html` in VS Code and select **"Open with Live Server"**.
 
 ### Editing Transcripts
 
-The transcript is driven by a timestamps array in `scripts/script.js`. Each entry maps a time (in seconds) to a line of text.
+The transcript is driven by a timestamps array in `transcripts/your-file-with-transcriptions.csv`. Each entry maps a time (in seconds) to a line of text.
 
-Open `scripts/script.js` and edit the array to match your audio:
+Each line follows the pattern `type|time|text` or `type|time|text|position` — simple, readable, and easy to parse.
 
-```javascript
-const lyrics = [
-  { time: 0,    text: "Welcome to the show." },
-  { time: 5.2,  text: "Today we're talking about..." },
-  { time: 12.8, text: "Let's dive right in." },
-  // Add as many entries as needed
-];
+```csv
+section|0|Intro
+line|1|Music starts.|center
+line|6|Welcome to the podcast episode.|left
+line|10|Today we talk about media and storytelling.|right
+
+section|16|First topic:
+line|1|Background.|center
+line|6|Context.|center
 ```
 
+Each row is split by | into its fields
+- **`type`** — represents a block of parragraphs `section` or an standalone parragraph `line`.
 - **`time`** — the timestamp (in seconds) at which this line should become active.
 - **`text`** — the transcript line displayed to the user.
+- **`position`** — (optional), only for parragraphs and there are 3 options: `left`, `center` or `right`.
 
 As the audio plays, the script automatically highlights the current line and scrolls it into view.
 

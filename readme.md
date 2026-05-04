@@ -182,6 +182,9 @@ Please ensure your changes don't break existing functionality before submitting.
 
 ---
 
+## Version
+v0.1.0
+
 ## License
 
 This project is open source. Please refer to the repository for license details.

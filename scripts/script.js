@@ -110,7 +110,7 @@ function getRandomColor() {
 
 // Usage
 (async () => {
-  lyricsData = await loadLyricsData("transcripts/mylyrics.csv");
+  lyricsData = await loadLyricsData("transcripts/episode_1.csv");
   renderLyrics();
 
   if (typeof sal === "function") {

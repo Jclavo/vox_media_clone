@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infinite Rows</title>
+  <title>Three Rows</title>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -12,23 +12,24 @@
     }
 
     body {
-      background-color: #f0ede8;
-      font-family: 'Georgia', serif;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
+      align-items: center;
+      background-color: #f0ede8;
+      font-family: 'Georgia', serif;
     }
 
     .container {
       width: 90vw;
+      height: 90vh;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      padding: 20px 0;
     }
 
     .row {
-      width: 100%;
-      height: calc((90vh - 12px * 2) / 3);
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -37,78 +38,26 @@
       font-weight: bold;
       letter-spacing: 0.05em;
       color: #fff;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    .row.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .row:nth-child(1) {
+      background-color: #3d5a80;
+    }
+
+    .row:nth-child(2) {
+      background-color: #98c1d9;
+    }
+
+    .row:nth-child(3) {
+      background-color: #e76f51;
     }
   </style>
 </head>
 <body>
-
-  <div class="container" id="container">
-    <div class="row" style="background-color:#3d5a80">Row 1</div>
-    <div class="row" style="background-color:#98c1d9">Row 2</div>
-    <div class="row" style="background-color:#e76f51">Row 3</div>
-    <div class="row" style="background-color:#2d6a4f">Row 4</div>
-    <div class="row" style="background-color:#74c69d">Row 5</div>
-    <div class="row" style="background-color:#f4a261">Row 6</div>
+  <div class="container">
+    <div class="row">Row 1</div>
+    <div class="row">Row 2</div>
+    <div class="row">Row 3</div>
   </div>
-
-  <script>
-    const colors = [
-      '#3d5a80','#98c1d9','#e76f51',
-      '#2d6a4f','#74c69d','#f4a261',
-      '#7b2d8b','#c77dff','#e63946',
-      '#1d3557','#457b9d','#a8dadc',
-      '#6d4c41','#bcaaa4','#ef6c00',
-    ];
-
-    const container = document.getElementById('container');
-    let rowCount = 6;
-
-    // Observe rows for fade-in animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    function observeRows() {
-      document.querySelectorAll('.row:not(.visible)').forEach(row => observer.observe(row));
-    }
-
-    // Append new rows when near bottom
-    const scrollObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        for (let i = 0; i < 3; i++) {
-          rowCount++;
-          const row = document.createElement('div');
-          row.className = 'row';
-          row.textContent = `Row ${rowCount}`;
-          row.style.backgroundColor = colors[(rowCount - 1) % colors.length];
-          container.appendChild(row);
-        }
-        // Move sentinel to new last row
-        container.appendChild(sentinel);
-        observeRows();
-      }
-    }, { threshold: 1.0 });
-
-    // Sentinel element at the bottom to trigger new rows
-    const sentinel = document.createElement('div');
-    sentinel.style.height = '1px';
-    container.appendChild(sentinel);
-    scrollObserver.observe(sentinel);
-
-    observeRows();
-  </script>
-
 </body>
 </html>

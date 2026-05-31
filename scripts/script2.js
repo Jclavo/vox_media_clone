@@ -95,19 +95,15 @@ function highlightCurrentLyric() {
     const currentSection = lyricsDataSections[i];
     const nextSection = lyricsDataSections[i + 1];
     const isInRange = currentTime >= currentSection.time && (!nextSection || currentTime < nextSection.time);
+    const currentElement = document.getElementById("lyrics-section-" + i);
 
     if (isInRange) {
-      //activeIndex = i;
-      // debugger
-      document.getElementById("lyrics-section-" + i).focus();
-      break;
+      currentElement.focus();
+      currentElement.style.borderStyle =  'double';
+      continue;
     }
-  }
-
-  document.querySelectorAll(".lyrics-section").forEach((sectionEl) => {
-    const index = Number(sectionEl.dataset.index);
-    // sectionEl.style.display = index !== activeIndex ? "none" : "block";
-  });
+    currentElement.style.borderStyle =  'none';
+  } 
 }
 
 function getRandomColor() {

@@ -57,7 +57,7 @@ function renderDiv(index, time) {
   itemDiv.className = "lyrics-section";
   itemDiv.id = "lyrics-section-" + index;
   itemDiv.tabIndex = index;
-  itemDiv.style.height = "1000px";
+  itemDiv.style.height = "500px";
   itemDiv.dataset.index = String(index);
   itemDiv.style.backgroundColor = getRandomColor();
   itemDiv.setAttribute("data-sal", "fade");

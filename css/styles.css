@@ -44,7 +44,8 @@ h2 {
 }
 
 .lyrics-section {
-  height: 500px;
+  /* height: 50% !important;
+  width: 80% !important; */
   /* display: none; */
 }
 

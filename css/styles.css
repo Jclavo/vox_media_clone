@@ -44,9 +44,7 @@ h2 {
 }
 
 .lyrics-section {
-  /* height: 50% !important;
-  width: 80% !important; */
-  /* display: none; */
+  margin: 100px 20px;
 }
 
 .lyrics-line {

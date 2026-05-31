@@ -111,7 +111,7 @@ function highlightCurrentLyric() {
 }
 
 function getRandomColor() {
-  return "#" + Math.floor(Math.random()*16777215).toString(16);
+  return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 // Usage
@@ -132,4 +132,45 @@ if (audio) {
   audio.addEventListener("timeupdate", highlightCurrentLyric);
   audio.addEventListener("seeked", highlightCurrentLyric);
   audio.addEventListener("play", highlightCurrentLyric);
+}
+
+// Listen to the wheel event across the entire document
+document.addEventListener('wheel', (event) => {
+
+  let scrollNextStepValue = null;
+
+  if (event.deltaY > 0) {
+    // scroll down
+    scrollNextStepValue = 1
+  } else if (event.deltaY < 0) {
+    // scroll up
+    scrollNextStepValue = -1
+  }
+
+  this.handleMouseScroll(scrollNextStepValue)
+});
+
+/**
+ * Logic to update the slide according to Mouse Scroll direction
+ */
+function handleMouseScroll(scrollNextStepValue) {
+    audio.pause()
+
+  const currentActiveElementIndex = document.activeElement.tabIndex
+  let nextActiveElementIndex = currentActiveElementIndex + scrollNextStepValue
+
+  const lyricsDataSections = lyricsData.filter(section => section.type === "section")
+
+  if (nextActiveElementIndex < 0 || nextActiveElementIndex >= lyricsDataSections.length) {
+    // console.log('no more slides to move')
+    nextActiveElementIndex = currentActiveElementIndex
+  }
+
+  const focusedElementTime = lyricsDataSections[nextActiveElementIndex].time ?? 0
+  document.getElementById("lyrics-section-" + nextActiveElementIndex).focus()
+
+  audio.currentTime = focusedElementTime
+  audio.play()
+
+  // console.log('Moving to Slide #' + nextActiveElementIndex)
 }

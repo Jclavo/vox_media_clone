@@ -81,7 +81,7 @@ function renderParragraph(line) {
 }
 
 function highlightCurrentLyric() {
-  // debugger
+
   if (!audio) {
     return;
   }
@@ -99,11 +99,11 @@ function highlightCurrentLyric() {
 
     if (isInRange) {
       currentElement.focus();
-      currentElement.style.borderStyle =  'double';
+      currentElement.style.borderStyle = 'double';
       continue;
     }
-    currentElement.style.borderStyle =  'none';
-  } 
+    currentElement.style.borderStyle = 'none';
+  }
 }
 
 function getRandomColor() {
@@ -116,7 +116,6 @@ function getRandomColor() {
   renderLyrics();
 
   if (typeof sal === "function") {
-    console.log("sal is a function"); // remember to remove this later
     sal({
       once: false
     });
@@ -150,7 +149,12 @@ document.addEventListener('wheel', (event) => {
  * Logic to update the slide according to Mouse Scroll direction
  */
 function handleMouseScroll(scrollNextStepValue) {
-    audio.pause()
+
+  if (!this.isAudioPlaying()) {
+    return;
+  }
+
+  audio.pause()
 
   const currentActiveElementIndex = document.activeElement.tabIndex
   let nextActiveElementIndex = currentActiveElementIndex + scrollNextStepValue
@@ -169,4 +173,8 @@ function handleMouseScroll(scrollNextStepValue) {
   audio.play()
 
   // console.log('Moving to Slide #' + nextActiveElementIndex)
+}
+
+function isAudioPlaying() {
+  return !audio.paused && !audio.ended && audio.currentTime > 0;
 }

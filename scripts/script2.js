@@ -57,7 +57,7 @@ function renderDiv(index, time) {
   itemDiv.className = "lyrics-section";
   itemDiv.id = "lyrics-section-" + index;
   itemDiv.tabIndex = index;
-  itemDiv.style.height = "500px";
+  itemDiv.style.height = "550px";
   itemDiv.dataset.index = String(index);
   itemDiv.style.backgroundColor = getRandomColor();
   itemDiv.setAttribute("data-sal", "fade");
@@ -150,9 +150,9 @@ document.addEventListener('wheel', (event) => {
  */
 function handleMouseScroll(scrollNextStepValue) {
 
-  if (!this.isAudioPlaying()) {
-    return;
-  }
+  // if (!this.isAudioPlaying()) {
+  //   return;
+  // }
 
   audio.pause()
 

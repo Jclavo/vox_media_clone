@@ -108,7 +108,14 @@ function highlightCurrentLyric() {
 }
 
 function getRandomColor() {
-  return "#" + Math.floor(Math.random() * 16777215).toString(16);
+  let r, g, b;
+  do {
+    r = Math.floor(Math.random() * 256);
+    g = Math.floor(Math.random() * 256);
+    b = Math.floor(Math.random() * 256);
+  } while ((r * 0.299 + g * 0.587 + b * 0.114) < 128);
+
+  return `rgb(${r}, ${g}, ${b})`;
 }
 
 // Usage

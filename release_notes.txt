@@ -1,2 +1,6 @@
 0.1.0
 - Feat: Display transcripts in a solo div.
+
+0.2.0
+- Feat: Use a new visual approach,
+- Feat: Add option to use mouse scroll to change transcripts slides.

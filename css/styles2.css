@@ -21,7 +21,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3d5a80;
+    background-color: white;
     border-radius: 0 0 8px 8px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -62,4 +62,8 @@ body {
 
 .section:nth-child(3) {
     background-color: #98c1d9;
+}
+
+audio {
+  width: 70% !important;
 }

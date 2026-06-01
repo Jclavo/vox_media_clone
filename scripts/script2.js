@@ -2,6 +2,8 @@ const audio = document.getElementById("podcast-audio");
 const lyricsList = document.getElementById("lyrics-list");
 let lyricsData = [];
 
+document.body.style.overflow = 'hidden';
+
 async function loadLyricsData(filePath) {
   const response = await fetch(filePath);
   const raw = await response.text();

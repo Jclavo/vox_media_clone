@@ -22,7 +22,6 @@ body {
     align-items: center;
     justify-content: center;
     background-color: white;
-    border-radius: 0 0 8px 8px;
     font-size: 1.2rem;
     font-weight: bold;
     letter-spacing: 0.05em;
@@ -43,7 +42,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border-radius: 8px;
     font-size: 1.2rem;
     font-weight: bold;
     letter-spacing: 0.05em;

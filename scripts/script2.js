@@ -57,7 +57,6 @@ function renderDiv(index, time) {
   itemDiv.className = "lyrics-section";
   itemDiv.id = "lyrics-section-" + index;
   itemDiv.tabIndex = index;
-  itemDiv.style.height = "550px";
   itemDiv.dataset.index = String(index);
   itemDiv.style.backgroundColor = getRandomColor();
   itemDiv.setAttribute("data-sal", "fade");
@@ -99,10 +98,10 @@ function highlightCurrentLyric() {
 
     if (isInRange) {
       currentElement.focus();
-      currentElement.style.borderStyle = 'double';
+      // currentElement.style.borderStyle = 'double';
       continue;
     }
-    currentElement.style.borderStyle = 'none';
+    // currentElement.style.borderStyle = 'none';
   }
 }
 

@@ -571,7 +571,7 @@
     // ==================== TRANSCRIPTION ====================
     async function transcribeAudio() {
       if (!selectedFile || !DEEPGRAM_API_KEY) {
-        showStatus('❌ API key não configurada. Clique em ⚙️ Configurações.', 'error');
+        showStatus('API key não configurada. Clique em Configurações.', 'error');
         return;
       }
 
@@ -609,13 +609,13 @@
         // Display result
         transcriptText.textContent = transcript;
         transcriptSection.classList.add('visible');
-        showStatus('✓ Transcrição concluída!', 'success');
+        showStatus('Transcrição concluída!', 'success');
       } catch (error) {
         console.error('Error:', error);
         if (error.message.includes('401') || error.message.includes('Unauthorized')) {
-          showStatus('❌ API key inválida. Verifique em ⚙️ Configurações.', 'error');
+          showStatus('API key inválida. Verifique em Configurações.', 'error');
         } else {
-          showStatus(`❌ Erro: ${error.message}`, 'error');
+          showStatus(`Erro: ${error.message}`, 'error');
         }
       } finally {
         showLoading(false);
@@ -629,10 +629,10 @@
     copyBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(transcriptText.textContent);
-        showStatus('✓ Copiado para área de transferência!', 'success');
+        showStatus('Copiado para área de transferência!', 'success');
         setTimeout(() => showStatus('', ''), 2000);
       } catch (error) {
-        showStatus('❌ Falha ao copiar', 'error');
+        showStatus('Falha ao copiar', 'error');
       }
     });
 

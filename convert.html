@@ -660,7 +660,7 @@
       DEEPGRAM_API_KEY = apiKeyInput.value.trim();
       localStorage.setItem('deepgramApiKey', DEEPGRAM_API_KEY);
       settingsModal.style.display = 'none';
-      showStatus('✓ API key salva!', 'success');
+      showStatus('API key salva!', 'success');
       setTimeout(() => showStatus('', ''), 2000);
     });
 
@@ -674,7 +674,7 @@
 
     // ==================== INIT ====================
     if (DEEPGRAM_API_KEY) {
-      showStatus('✓ API key carregada', 'success');
+      showStatus('API key carregada', 'success');
       setTimeout(() => showStatus('', ''), 2000);
     }
   </script>

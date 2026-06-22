@@ -4,3 +4,8 @@
 0.2.0
 - Feat: Use a new visual approach,
 - Feat: Add option to use mouse scroll to change transcripts slides.
+
+0.3.0
+- Feat: Integrate Deepgram API into the app for converting mp3 to text.
+- Feat: Show converted text in parragraphs.
+- Fix: Remove a line that caused the app to crash when an audio file is uploaded.
